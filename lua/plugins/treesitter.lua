@@ -2,9 +2,9 @@ return {
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
 	config = function()
-		require'nvim-treesitter.configs'.setup {
+		require("nvim-treesitter.configs").setup({
 			highlight = { enable = true },
-			indent = { enable = true },  
+			indent = { enable = true },
 			auto_install = true,
 			incremental_selection = {
 				enable = true,
@@ -53,8 +53,8 @@ return {
 				"vimdoc",
 				"query",
 				"javascript",
-				"html"
+				"html",
 			},
-		}
-	end
+		})
+	end,
 }
