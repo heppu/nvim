@@ -1,12 +1,21 @@
 return {
 	{ "hrsh7th/cmp-nvim-lsp" },
-	{ "hrsh7th/nvim-cmp" },
-	{ "L3MON4D3/LuaSnip" },
 	{ "neovim/nvim-lspconfig" },
 	{
 		"williamboman/mason.nvim",
 		config = function()
+			local capabilities = vim.lsp.protocol.make_client_capabilities()
+			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+
 			require("mason").setup({})
+
+			require("mason-tool-installer").setup({
+				ensure_installed = {
+					"stylua",
+					"eslint_d",
+					"prettierd",
+				},
+			})
 		end,
 	},
 	{
@@ -18,11 +27,11 @@ return {
 					"lua_ls",
 					"rust_analyzer",
 					"gopls",
+					"templ",
 					"html",
 					"htmx",
 					"jsonls",
 					"tsserver",
-					"stylua",
 				},
 				handlers = {
 					require("lsp-zero").default_setup,
@@ -41,4 +50,5 @@ return {
 			end)
 		end,
 	},
+	{ "WhoIsSethDaniel/mason-tool-installer.nvim" },
 }
