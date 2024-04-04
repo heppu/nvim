@@ -22,6 +22,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
+				auto_install = true,
 				ensure_installed = {
 					"bashls",
 					"lua_ls",
